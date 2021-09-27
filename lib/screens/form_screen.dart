@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:whats_my_bike_worth/screens/result_screen.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({Key? key}) : super(key: key);
@@ -26,12 +31,27 @@ class _FormScreenState extends State<FormScreen> {
     return _years;
   }
 
+  void _getResult() async {
+    var vals = _formKey.currentState?.value;
+
+    final response = await http.post(
+        Uri.parse('https://439b-103-87-52-190.ngrok.io/predict/'),
+        body: json.encode(vals),
+        headers: {'content-type': 'application/json'});
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ResultScreen(json.decode(response.body)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Fill Details',
+          style: GoogleFonts.courgette(),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xff4e405f),
@@ -48,6 +68,13 @@ class _FormScreenState extends State<FormScreen> {
                   FormBuilderTextField(
                     name: 'kms_driven',
                     autocorrect: false,
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.min(context, 1),
+                      ],
+                    ),
                     decoration: InputDecoration(
                       alignLabelWithHint: true,
                       label: const Text('Enter Kms Driven'),
@@ -62,6 +89,11 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                   FormBuilderDropdown(
                     name: 'owner',
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                      ],
+                    ),
                     items: ['First', 'Second', 'Third', 'Fourth'].map(
                       (item) {
                         return DropdownMenuItem(
@@ -83,6 +115,11 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                   FormBuilderDropdown(
                     name: 'location',
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                      ],
+                    ),
                     items: [
                       'Mumbai',
                       'Hyderabad',
@@ -112,6 +149,14 @@ class _FormScreenState extends State<FormScreen> {
                   FormBuilderTextField(
                     name: 'mileage',
                     autocorrect: false,
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.integer(context),
+                        FormBuilderValidators.min(context, 1),
+                        FormBuilderValidators.max(context, 100),
+                      ],
+                    ),
                     decoration: InputDecoration(
                       alignLabelWithHint: true,
                       label: const Text('Enter Mileage'),
@@ -127,6 +172,13 @@ class _FormScreenState extends State<FormScreen> {
                   FormBuilderTextField(
                     name: 'power',
                     autocorrect: false,
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.integer(context),
+                        FormBuilderValidators.min(context, 1),
+                      ],
+                    ),
                     decoration: InputDecoration(
                       alignLabelWithHint: true,
                       label: const Text('Enter Power (Bhp Value)'),
@@ -141,6 +193,11 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                   FormBuilderDropdown(
                     name: 'brand',
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                      ],
+                    ),
                     items: [
                       'Bajaj',
                       'Royal Enfield',
@@ -157,7 +214,7 @@ class _FormScreenState extends State<FormScreen> {
                       (item) {
                         return DropdownMenuItem(
                           child: Text(item),
-                          value: item.toLowerCase(),
+                          value: item,
                         );
                       },
                     ).toList(),
@@ -175,6 +232,12 @@ class _FormScreenState extends State<FormScreen> {
                   FormBuilderTextField(
                     name: 'engine',
                     autocorrect: false,
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.min(context, 1),
+                      ],
+                    ),
                     decoration: InputDecoration(
                       alignLabelWithHint: true,
                       label: const Text('Enter Engine Value (In cc)'),
@@ -189,6 +252,11 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                   FormBuilderDropdown(
                     name: 'model_year',
+                    validator: FormBuilderValidators.compose(
+                      [
+                        FormBuilderValidators.required(context),
+                      ],
+                    ),
                     items: _modelYearGenerator().map(
                       (item) {
                         return DropdownMenuItem(
@@ -205,6 +273,28 @@ class _FormScreenState extends State<FormScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ButtonTheme(
+                    minWidth: double.maxFinite,
+                    buttonColor: const Color(0xff4973a8),
+                    child: MaterialButton(
+                      // elevation: 10,
+                      // height: 45,
+                      onPressed: () {
+                        if (_formKey.currentState?.validate() == true) {
+                          _formKey.currentState?.save();
+                          _getResult();
+                        }
+                      },
+                      child: const Text(
+                        'SUBMIT',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      color: Colors.purple,
+                    ),
+                  )
                 ],
               ),
             ),
