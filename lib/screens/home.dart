@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:whats_my_bike_worth/screens/form_screen.dart';
+import '../utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: GoogleFonts.courgette(letterSpacing: 1.9),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xff4e405f),
+        backgroundColor: bgColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -29,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Container(
             height: screenSize.height * .8,
             alignment: Alignment.center,
-            // decoration: BoxDecoration(border: Border.all()),
             child: Column(
               children: [
                 Align(
@@ -46,10 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      "assets/images/b1.jpg",
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Find out what could be the potential value of your bike using Machine Learning algorithms,trained on thousands of data points.',
-                      style: GoogleFonts.notoSans(
-                        fontSize: 14,
+                      style: GoogleFonts.roboto(
+                        fontSize: 17,
                         color: Colors.black87,
                       ),
                     ),
@@ -61,8 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Fill out the simple form to know your bike\'s worth in rupees.',
-                      style: GoogleFonts.notoSans(
-                        fontSize: 14,
+                      style: GoogleFonts.roboto(
+                        fontSize: 17,
                         color: Colors.black87,
                       ),
                     ),
@@ -90,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Get Started',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    color: Colors.purple,
+                    color: btnColor,
                   ),
                 )
               ],
