@@ -47,7 +47,6 @@ class _FormScreenState extends State<FormScreen> {
 
     var data = json.decode(response.body);
 
-    print(data['data']);
     setState(() {
       isLoading = false;
     });
