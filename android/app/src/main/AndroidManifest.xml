@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.whats_my_bike_worth">
    <application
-        android:label="whats_my_bike_worth"
+        android:label="WhatsMyBikeWorth"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

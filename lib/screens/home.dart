@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Container(
+            color: const Color(0x0fffffff),
             height: screenSize.height * .8,
             alignment: Alignment.center,
             child: Column(
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Want To Know Your Bike\'s Resell Value?',
-                      style: GoogleFonts.courgette(fontSize: 19),
+                      style: GoogleFonts.courgette(fontSize: 18),
                     ),
                   ),
                 ),
@@ -77,29 +78,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 100,
-                ),
-                ButtonTheme(
-                  minWidth: screenSize.width * .9,
-                  buttonColor: const Color(0xff4973a8),
-                  child: MaterialButton(
-                    elevation: 10,
-                    height: 45,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) {
-                            return const FormScreen();
-                          },
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'Get Started',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: ButtonTheme(
+                    minWidth: screenSize.width * .9,
+                    buttonColor: const Color(0xff4973a8),
+                    child: MaterialButton(
+                      elevation: 10,
+                      height: 45,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) {
+                              return const FormScreen();
+                            },
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Get Started',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      color: btnColor,
                     ),
-                    color: btnColor,
                   ),
                 )
               ],
