@@ -13,7 +13,7 @@ https://github.com/ropali/used_bike_price_prediction
 
 ![Screenshot_2021-10-03-14-40-34-667_com example whats_my_bike_worth(1)](https://user-images.githubusercontent.com/31515245/135747433-63b04a4a-80dc-4a82-b393-5267d4da35e7.jpg)
 
-### ]Result Screen
+### Result Screen
 
 ![Screenshot_2021-10-03-14-41-18-953_com example whats_my_bike_worth(1)](https://user-images.githubusercontent.com/31515245/135747448-4012d6a9-d019-44ed-bb4e-a06de6aa9aac.jpg)
 
