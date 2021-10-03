@@ -1,16 +1,23 @@
-# whats_my_bike_worth
+# WhatsMyBikeWoth
 
-A new Flutter project.
+This is demo application for my Machine Learning project. This is the consumer facing application to find out what could be the resell value of you bike if you want to sell it.
+Find my ML project here.
+https://github.com/ropali/used_bike_price_prediction
 
-## Getting Started
+## Screenshots
+### Main Screen
 
-This project is a starting point for a Flutter application.
+![Screenshot_2021-10-03-14-40-02-933_com example whats_my_bike_worth(1)](https://user-images.githubusercontent.com/31515245/135747422-e140e1ac-9a36-4a25-9112-713fc0c1e5aa.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+### Form Screen
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Screenshot_2021-10-03-14-40-34-667_com example whats_my_bike_worth(1)](https://user-images.githubusercontent.com/31515245/135747433-63b04a4a-80dc-4a82-b393-5267d4da35e7.jpg)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Result Screen
+
+![Screenshot_2021-10-03-14-41-18-953_com example whats_my_bike_worth(1)](https://user-images.githubusercontent.com/31515245/135747448-4012d6a9-d019-44ed-bb4e-a06de6aa9aac.jpg)
+
+
+
+
+
