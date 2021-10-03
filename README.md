@@ -1,4 +1,4 @@
-# WhatsMyBikeWoth
+# WhatsMyBikeWorth
 
 This is demo application for my Machine Learning project. This is the consumer facing application to find out what could be the resell value of you bike if you want to sell it.
 Find my ML project here.
